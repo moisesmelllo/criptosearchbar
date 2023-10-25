@@ -3,11 +3,14 @@ import React from 'react'
 
 const Coins = ({coinsdata}) => {
 
-  console.log(coinsdata);
+  if (!coinsdata || coinsdata.length === 0) {
+    return <div>Nenhum dado de moeda disponível no momento.</div>;
+  }
+
   return (
     <>
     <ul className='grid grid-cols-4 mx-auto max-w-[1260px] gap-10 mt-14'>
-      {coinsdata.map((coin) => (
+      {coinsdata.map(coin => (
         <li key={coin.uuid} className='flex flex-col items-center justify-center'>
           <Image 
             src={coin.iconUrl}

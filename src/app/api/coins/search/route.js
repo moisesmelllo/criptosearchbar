@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import axios from 'axios';
+import axios from "axios";
 
 async function fetchCoins() {
   const options = {
@@ -29,6 +29,14 @@ async function fetchCoins() {
 }
 
 export async function GET(request) {
-  const coins = await fetchCoins()
-  return NextResponse.json(coins)
+  const coins = await fetchCoins();
+  const {searchParams} = new URL(request.url)
+  const query = searchParams.get('query')
+
+  const filteredCoins = coins.data.coins.filter((coin) => {
+    return coin.name.toLowerCase().includes(query.
+    toLowerCase()) || coin.symbol.toLowerCase().includes(query.toLowerCase())
+  })
+
+  return NextResponse.json(filteredCoins)
 }

@@ -20,7 +20,10 @@ export default function Home() {
   return (
     <div className="text-center">
       <h1 className="font-bold text-6xl mt-14">Crypto Coins</h1>
-      <SearchCoin />
+      <SearchCoin getSearchResults={(result) => {
+        const updatedResult = Array.isArray(result) ? result : [result];
+        setCoinsData(updatedResult);
+    }} />
       <Coins coinsdata={coinsdata} />
     </div>
   )
