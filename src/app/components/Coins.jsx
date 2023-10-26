@@ -18,7 +18,8 @@ const Coins = ({coinsdata}) => {
             width={70}
             height={70}
             priority
-          />
+            style={{height: 'auto'}}
+/>
           <h3>{coin.name}</h3>
           <p>{coin.symbol}</p>
           <p>{coin.price}</p>

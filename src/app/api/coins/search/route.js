@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 
+
 async function fetchCoins() {
   const options = {
     method: 'GET',
